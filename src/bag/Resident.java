@@ -33,7 +33,6 @@ public class Resident {
     public void removeEntrancePoint(EntrancePoint entrancePoint){
 
         if (entrancePoints.contains(entrancePoint)) {
-            System.out.println("here");
             entrancePoints.remove(entrancePoint);
             entrancePoint.removeHouse(entrancePoint.house);
             entrancePoint.removeResident(this);
@@ -93,6 +92,10 @@ public class Resident {
     public void setName(String name) throws IllegalArgumentException {
         if (name == null || name.trim().equals("")) {
             throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+        boolean match = name.matches("^[A-Z][a-z]+$");
+        if (!match){
+            throw new IllegalArgumentException("Name must starts from capital letter");
         }
         this.name = name;
     }

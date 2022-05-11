@@ -1,6 +1,7 @@
 package bag;
 
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 public class EntrancePoint {
     private LocalDateTime date;
@@ -44,7 +45,6 @@ public class EntrancePoint {
     public void removeHouse(House houseToRemove){
         if (getHouse() != null && this.getHouse() == houseToRemove) {
             this.house = null;
-
             houseToRemove.removeEntrancePoint(this);
         }
     }
