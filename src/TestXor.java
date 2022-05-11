@@ -1,7 +1,7 @@
-import xor.Employee;
-import xor.Garden;
-import xor.House;
-import xor.HouseAddress;
+import xorAndOrdered.Employee;
+import xorAndOrdered.Garden;
+import xorAndOrdered.House;
+import xorAndOrdered.HouseAddress;
 
 import java.time.LocalDate;
 import java.util.Set;

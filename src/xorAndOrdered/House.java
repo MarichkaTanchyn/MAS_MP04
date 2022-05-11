@@ -1,18 +1,16 @@
-package xor;
+package xorAndOrdered;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
-public class House implements Serializable {
+public class House implements Serializable, Comparable<House> {
     private long id;
     private String name;
     private LocalDate dateOfSale;
     private HouseAddress houseAddress;
     private Set<Integer> apartments;
-    private static Set<House> houses = new HashSet<>();
+    private static final Set<House> houses = new TreeSet<>(); //ordered
 
     private List<Employee> employees = new ArrayList<>();
 
@@ -43,6 +41,27 @@ public class House implements Serializable {
         }
     }
 
+    private static void addHouse(House house) throws IllegalArgumentException {
+        if (house == null) {
+            throw new IllegalArgumentException("House cannot be null");
+        }
+        boolean alreadyAdded = House.getHouses().stream().anyMatch(p -> p.getId() == house.getId());
+        if (alreadyAdded) {
+            throw new IllegalArgumentException("House with id " + house.getId() + " has already been added");
+        }
+        House.houses.add(house);
+    }
+
+    private static void removeHouse(House house) throws IllegalArgumentException {
+        if (house == null) {
+            throw new IllegalArgumentException("House cannot be null");
+        }
+        boolean alreadyDeleted = House.getHouses().stream().anyMatch(p -> p.getId() == house.getId());
+        if (alreadyDeleted) {
+            throw new IllegalArgumentException("House with id " + house.getId() + " has already been deleted");
+        }
+        House.houses.remove(house);
+    }
 
     //Getters
     public long  getId() {
@@ -78,7 +97,7 @@ public class House implements Serializable {
         if (id < 0) {
             throw new IllegalArgumentException("Id can not be negative value.");
         }
-        boolean alreadyExists = houses.stream().anyMatch(house -> house.getId() == id);
+        boolean alreadyExists = getHouses().stream().anyMatch(house -> house.getId() == id);
         if (alreadyExists) {
             throw new IllegalArgumentException("Id you entered already exists.");
         }
@@ -139,5 +158,14 @@ public class House implements Serializable {
             stringBuilder.append(e.getShortInfo()).append(' ');
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(House house) {
+        int result = Integer.compare(this.getApartments().size(),house.getApartments().size());
+        if (result != 0) {
+            return result;
+        }
+        return Long.compare(this.getId(), house.getId());
     }
 }

@@ -1,4 +1,4 @@
-package xor;
+package xorAndOrdered;
 
 import java.util.ArrayList;
 import java.util.Collections;

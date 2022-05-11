@@ -1,4 +1,4 @@
-package xor;
+package AttributeUnique;
 
 import java.io.Serializable;
 

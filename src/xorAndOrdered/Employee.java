@@ -1,4 +1,4 @@
-package xor;
+package xorAndOrdered;
 
 import java.time.LocalDate;
 
