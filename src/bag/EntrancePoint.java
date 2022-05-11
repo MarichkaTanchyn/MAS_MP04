@@ -10,10 +10,10 @@ public class EntrancePoint {
     Resident resident;
 
     public EntrancePoint(LocalDateTime date, int id, House house, Resident resident) {
-        this.date = date;
-        this.id = id;
-        this.house = house;
-        this.resident = resident;
+        setId(id);
+        setDate(date);
+        setHouse(house);
+        setResident(resident);
     }
 
 

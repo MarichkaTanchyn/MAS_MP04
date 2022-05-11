@@ -38,6 +38,7 @@ public class House implements Serializable {
     public void removeEntrancePoint(EntrancePoint entrancePoint){
         if (entrancePoints.contains(entrancePoint)){
             entrancePoints.remove(entrancePoint);
+            entrancePoint.removeResident(entrancePoint.resident);
             entrancePoint.removeHouse(this);
         }
     }
@@ -241,6 +242,7 @@ public class House implements Serializable {
                 ", name='" + name + '\'' +
                 ", dateOfSale=" + dateOfSale +
                 ", houseAddress=" + houseAddress +
-                ", apartments=" + apartments ;
+                ", apartments=" + apartments +
+                ", residents=" + Arrays.toString(this.entrancePoints.stream().map(ep -> ep.getResident().getId()).toArray());
     }
 }

@@ -31,8 +31,11 @@ public class Resident {
     }
 
     public void removeEntrancePoint(EntrancePoint entrancePoint){
-        if (entrancePoints.contains(entrancePoint)){
+
+        if (entrancePoints.contains(entrancePoint)) {
+            System.out.println("here");
             entrancePoints.remove(entrancePoint);
+            entrancePoint.removeHouse(entrancePoint.house);
             entrancePoint.removeResident(this);
         }
     }
@@ -128,7 +131,7 @@ public class Resident {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", apartmentNumber=" + apartmentNumber +
-                ", house=" + house +
-                '}';
+                ", houses=" + Arrays.toString(this.entrancePoints.stream().map(ep -> ep.getHouse().getId()).toArray()) +
+                 '}';
     }
 }
