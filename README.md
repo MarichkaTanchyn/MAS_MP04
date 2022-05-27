@@ -1,10 +1,10 @@
 # MAS_MP04
-                          Xor 
+Xor 
 
 <img width="813" alt="Screenshot 2022-05-27 at 19 32 58" src="https://user-images.githubusercontent.com/65307654/170761965-c7851f43-ee53-4ed1-88e5-30070a7046e1.png">
 
 
-                          Bag
+Bag
                           
                           
                          
@@ -12,7 +12,7 @@
 
 
 
-                           Ordered
+Ordered
 
 
 
@@ -20,4 +20,5 @@
 
 
 Unique attribute -> map of ID
-Attribute -> name in Resident
+
+Attribute -> setName() in Resident
